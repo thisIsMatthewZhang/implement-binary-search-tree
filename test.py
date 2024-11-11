@@ -13,6 +13,7 @@ class TestPut(TestCase):
         self.bst.put(10)
         self.assertIsNotNone(self.bst)
 
+
 class TestGet(TestCase):
     pass
 

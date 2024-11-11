@@ -4,9 +4,14 @@ class BST:
         self.root = None
 
     def put(self, new_val: int):
+        if self.root is None:
+            new_node = Node(new_val)
+            self.root = new_node
+            return
+
         def _put(curr: Node, new_val: int):
             if curr.val == new_val:
-                pass
+                return
             # insert new node into left subtree
             elif new_val < curr.val:
                 if curr.left is None:
