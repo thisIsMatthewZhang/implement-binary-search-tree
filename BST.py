@@ -47,7 +47,20 @@ class BST:
         return _get(self.root, val)
 
     def contains(self, val: int):
-        pass
+        def _contains(curr: Node, val: int):
+            if curr is None:
+                return False
+            # val is found in tree
+            elif curr.val == val:
+                return True
+            # val is in left subtree if it exists
+            elif val < curr.val:
+                return _contains(curr.left, val)
+            # val is in right subtree if it exists
+            elif val > curr.val:
+                return _contains(curr.right, val)
+
+        return _contains(self.root, val)
 
     def remove(self, val: int):
         pass
