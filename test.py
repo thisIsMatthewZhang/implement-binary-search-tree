@@ -76,9 +76,26 @@ class TestGet(TestCase):
         self.assertEqual(self.bst.get(20), 20)
         self.assertEqual(self.bst.get(20), self.bst.root.right.val)
 
-
 class TestContains(TestCase):
-    pass
+    def test_contains_returns_false_if_tree_is_empty(self):
+        self.bst = BST()
+        self.assertFalse(self.bst.contains(0))
+        self.assertFalse(self.bst.contains(-5))
+
+    def test_contains_returns_false_if_tree_does_not_contain_specified_val(self):
+        self.bst = BST()
+        self.bst.put(50)
+        self.bst.put(51)
+        self.assertFalse(self.bst.contains(52))
+        self.assertFalse(self.bst.contains(49))
+
+    def test_contains_returns_true_if_tree_does_contain_val(self):
+        self.bst = BST()
+        self.bst.put(50)
+        for _ in range(15, 100, 5):
+            self.bst.put(_)
+        self.assertTrue(self.bst.contains(15))
+        self.assertTrue(self.bst.contains(95))
 
 class TestRemove(TestCase):
     pass
