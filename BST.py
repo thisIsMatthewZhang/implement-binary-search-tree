@@ -1,11 +1,28 @@
-import Node
-
+from Node import Node
 class BST:
-    def __init__(self, root: Node):
-        self.root = root
+    def __init__(self):
+        self.root = None
 
-    def put(self, val: int):
-        pass
+    def put(self, new_val: int):
+        def _put(curr: Node, new_val: int):
+            if curr.val == new_val:
+                pass
+            # insert new node into left subtree
+            elif new_val < curr.val:
+                if curr.left is None:
+                    new_node = Node(new_val)
+                    curr.left = new_node
+                else:
+                    _put(curr.left, new_val)
+            # insert new node into right subtree
+            elif new_val > curr.val:
+                if curr.right is None:
+                    new_node = Node(new_val)
+                    curr.right = new_node
+                else:
+                    _put(curr.right, new_val)
+
+        _put(self.root, new_val)
 
     def get(self, val: int):
         pass
