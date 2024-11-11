@@ -41,7 +41,41 @@ class TestPut(TestCase):
 
 
 class TestGet(TestCase):
-    pass
+    def test_getting_empty_tree_returns_none(self):
+        self.bst = BST()
+        self.assertIsNone(self.bst.get(1))
+
+    def test_getting_val_that_does_not_exist_in_tree_returns_none(self):
+        self.bst = BST()
+        self.bst.put(50)
+        for _ in range(15, 100, 5):
+            self.bst.put(_)
+        self.assertIsNone(self.bst.get(100))
+        self.assertIsNone(self.bst.get(10))
+        self.assertIsNone(self.bst.get(-15))
+
+    def test_getting_root_val(self):
+        self.bst = BST()
+        self.bst.put(10)
+        self.assertEqual(self.bst.get(10), 10)
+        self.assertEqual(self.bst.get(10), self.bst.root.val)
+
+    def test_getting_val_from_left_subtree(self):
+        self.bst = BST()
+        self.bst.put(10)
+        self.bst.put(5)
+        self.bst.put(20)
+        self.assertEqual(self.bst.get(5), 5)
+        self.assertEqual(self.bst.get(5), self.bst.root.left.val)
+
+    def test_getting_val_from_right_subtree(self):
+        self.bst = BST()
+        self.bst.put(10)
+        self.bst.put(5)
+        self.bst.put(20)
+        self.assertEqual(self.bst.get(20), 20)
+        self.assertEqual(self.bst.get(20), self.bst.root.right.val)
+
 
 class TestContains(TestCase):
     pass
