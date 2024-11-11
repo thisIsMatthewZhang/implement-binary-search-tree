@@ -30,7 +30,21 @@ class BST:
         _put(self.root, new_val)
 
     def get(self, val: int):
-        pass
+
+        def _get(curr: Node, val: int):
+            if curr is None:
+                return None
+            # val is found in tree
+            elif curr.val == val:
+                return curr.val
+            # val is in left subtree if it exists
+            elif val < curr.val:
+                return _get(curr.left, val)
+            # val is in right subtree if it exists
+            elif val > curr.val:
+                return _get(curr.right, val)
+
+        return _get(self.root, val)
 
     def contains(self, val: int):
         pass
