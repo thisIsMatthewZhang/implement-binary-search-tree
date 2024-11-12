@@ -94,7 +94,18 @@ class BST:
         return result
 
     def inorder(self):
-        pass
+        result = []
+
+        def _inorder(curr: Node, inorder_list: list):
+            if curr is None:
+                return
+            else:
+                _inorder(curr.left, inorder_list)
+                inorder_list.append(curr.val)
+                _inorder(curr.right, inorder_list)
+
+        _inorder(self.root, result)
+        return result
 
     def postorder(self):
         pass
