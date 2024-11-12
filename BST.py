@@ -29,9 +29,9 @@ class BST:
 
         _put(self.root, new_val)
 
-    def get(self, val: int):
+    def get(self, val: int) -> int:
 
-        def _get(curr: Node, val: int):
+        def _get(curr: Node, val: int) -> int:
             if curr is None:
                 return None
             # val is found in tree
@@ -46,8 +46,8 @@ class BST:
 
         return _get(self.root, val)
 
-    def contains(self, val: int):
-        def _contains(curr: Node, val: int):
+    def contains(self, val: int) -> bool:
+        def _contains(curr: Node, val: int) -> bool:
             if curr is None:
                 return False
             # val is found in tree
@@ -65,11 +65,11 @@ class BST:
     def remove(self, val: int):
         pass
 
-    def height(self):
+    def height(self) -> int:
         pass
 
-    def size(self):
-        def _size(curr):
+    def size(self) -> int:
+        def _size(curr: Node) -> int:
             if curr is None:
                 return 0
             else:
@@ -79,8 +79,19 @@ class BST:
 
         return _size(self.root)
 
-    def preorder(self):
-        pass
+    def preorder(self) -> list:
+        result = []
+
+        def _preorder(curr: Node, preorder_list: list):
+            if curr is None:
+                return
+            else:
+                preorder_list.append(curr.val)
+                _preorder(curr.left, preorder_list)
+                _preorder(curr.right, preorder_list)
+
+        _preorder(self.root, result)
+        return result
 
     def inorder(self):
         pass
