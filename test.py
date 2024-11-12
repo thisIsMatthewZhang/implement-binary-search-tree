@@ -127,5 +127,16 @@ class TestSize(TestCase):
         self.bst.put(21)
         self.assertEqual(self.bst.size(), 10)
 
+class TestPreorder(TestCase):
+    pass
+
+class TestInorder(TestCase):
+    pass
+
+class TestPostorder(TestCase):
+    pass
+
+
+
 
 

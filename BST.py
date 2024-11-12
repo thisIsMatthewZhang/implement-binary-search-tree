@@ -79,11 +79,11 @@ class BST:
 
         return _size(self.root)
 
-    def preorder_keys(self):
+    def preorder(self):
         pass
 
-    def inorder_keys(self):
+    def inorder(self):
         pass
 
-    def postorder_keys(self):
+    def postorder(self):
         pass
