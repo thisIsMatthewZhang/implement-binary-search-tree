@@ -154,7 +154,28 @@ class TestPreorder(TestCase):
 
 
 class TestInorder(TestCase):
-    pass
+    def test_empty_tree_returns_empty_list(self):
+        self.bst = BST()
+        empty_list = self.bst.inorder()
+        self.assertEqual(empty_list, [])
+
+    def test_inorder_on_tree_with_one_node(self):
+        self.bst = BST()
+        self.bst.put(12)
+        li = self.bst.inorder()
+        self.assertEqual(li, [12])
+        self.assertEqual(li[0], 12)
+
+    def test_inorder_on_tree_with_several_nodes(self):
+        self.bst = BST()
+        for _ in range(5, 11):
+            self.bst.put(_ * 2)
+        for _ in range(5, 0, -1):
+            self.bst.put(_ * 2)
+        self.bst.put(9)
+        self.bst.put(17)
+        li = self.bst.inorder()
+        self.assertEqual(li, [2, 4, 6, 8, 9, 10, 12, 14, 16, 17, 18, 20])
 
 class TestPostorder(TestCase):
     pass
