@@ -104,5 +104,28 @@ class TestHeight(TestCase):
     pass
 
 class TestSize(TestCase):
-    pass
+    def test_size_of_empty_tree_returns_zero(self):
+        self.bst = BST()
+        self.assertEqual(self.bst.size(), 0)
+
+    def test_tree_with_one_node_returns_one(self):
+        self.bst = BST()
+        self.bst.put(0)
+        self.assertEqual(self.bst.size(), 1)
+
+    def test_tree_with_ten_nodes_returns_ten(self):
+        self.bst = BST()
+        for _ in range(10):
+            self.bst.put(_ * 3)
+        self.assertEqual(self.bst.size(), 10)
+
+    def test_tree_with_ten_nodes_returns_ten_after_putting_duplicate_vals(self):
+        self.bst = BST()
+        for _ in range(10):
+            self.bst.put(_ * 3)
+        self.bst.put(6)
+        self.bst.put(21)
+        self.assertEqual(self.bst.size(), 10)
+
+
 
