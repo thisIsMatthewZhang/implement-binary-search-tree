@@ -79,6 +79,17 @@ class BST:
 
         return _size(self.root)
 
+    def sum(self) -> int:
+        def _sum(curr: Node) -> int:
+            if curr is None:
+                return 0
+            else:
+                left_sum = _sum(curr.left)
+                right_sum = _sum(curr.right)
+                return left_sum + right_sum + curr.val
+
+        return _sum(self.root)
+
     def preorder(self) -> list:
         result = []
 
