@@ -69,4 +69,21 @@ class BST:
         pass
 
     def size(self):
+        def _size(curr):
+            if curr is None:
+                return 0
+            else:
+                L = _size(curr.left)
+                R = _size(curr.right)
+                return L + R + 1
+
+        return _size(self.root)
+
+    def preorder_keys(self):
+        pass
+
+    def inorder_keys(self):
+        pass
+
+    def postorder_keys(self):
         pass
