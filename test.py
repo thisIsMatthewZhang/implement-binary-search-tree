@@ -128,7 +128,30 @@ class TestSize(TestCase):
         self.assertEqual(self.bst.size(), 10)
 
 class TestPreorder(TestCase):
-    pass
+    def test_empty_tree_returns_empty_list(self):
+        self.bst = BST()
+        empty_list = self.bst.preorder()
+        self.assertEqual(empty_list, [])
+        self.assertFalse(empty_list)
+
+    def test_preorder_on_tree_with_one_node(self):
+        self.bst = BST()
+        self.bst.put(10)
+        li = self.bst.preorder()
+        self.assertEqual(li[0], 10)
+        self.assertEqual(li, [10])
+
+    def test_preorder_on_tree_with_several_nodes(self):
+        self.bst = BST()
+        for _ in range(5, 11):
+            self.bst.put(_ * 2)
+        for _ in range(5, 0, -1):
+            self.bst.put(_ * 2)
+        self.bst.put(9)
+        self.bst.put(17)
+        li = self.bst.preorder()
+        self.assertEqual(li, [10, 8, 6, 4, 2, 9, 12, 14, 16, 18, 17, 20])
+
 
 class TestInorder(TestCase):
     pass
