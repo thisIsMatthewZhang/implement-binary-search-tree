@@ -66,7 +66,16 @@ class BST:
         pass
 
     def height(self) -> int:
-        pass
+
+        def _height(curr: Node):
+            if curr is None:
+                return -1
+            else:
+                L = _height(curr.left)
+                R = _height(curr.right)
+                return L + 1 if L > R else R + 1
+
+        return 0 if self.size() == 1 else _height(self.root)
 
     def size(self) -> int:
         def _size(curr: Node) -> int:
