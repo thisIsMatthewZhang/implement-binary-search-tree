@@ -1,6 +1,7 @@
 from unittest import TestCase
 from BST import BST
 
+
 class TestPut(TestCase):
     def test_that_bst_is_none_upon_initialization(self):
         self.bst = BST()
@@ -76,6 +77,7 @@ class TestGet(TestCase):
         self.assertEqual(self.bst.get(20), 20)
         self.assertEqual(self.bst.get(20), self.bst.root.right.val)
 
+
 class TestContains(TestCase):
     def test_contains_returns_false_if_tree_is_empty(self):
         self.bst = BST()
@@ -97,11 +99,51 @@ class TestContains(TestCase):
         self.assertTrue(self.bst.contains(15))
         self.assertTrue(self.bst.contains(95))
 
+
 class TestRemove(TestCase):
     pass
 
+
 class TestHeight(TestCase):
-    pass
+    def setUp(self):
+        self.bst = BST()
+
+    def test_height_of_empty_tree_is_negative_one(self):
+        self.assertEqual(self.bst.height(), -1)
+
+    def test_height_of_tree_with_one_node_is_zero(self):
+        self.bst.put(29)
+        self.assertEqual(self.bst.height(), 0)
+
+    def test_height_of_tree_with_two_node_is_one(self):
+        self.bst.put(38)
+        self.bst.put(50)
+        self.assertEqual(self.bst.height(), 1)
+
+    def test_height_of_tree_with_longer_right_subtree(self):
+        self.bst.put(17)
+        self.bst.put(19)
+        self.bst.put(16)
+        self.bst.put(24)
+        self.bst.put(91)
+        self.bst.put(89)
+        print(self.bst.preorder())
+        self.assertEqual(self.bst.height(), 4)  # number of nodes 'n' in longest path is 5 -> height is n - 1
+
+    def test_height_of_tree_with_longer_left_subtree(self):
+        self.bst.put(34)
+        self.bst.put(31)
+        self.bst.put(22)
+        self.bst.put(25)
+        self.bst.put(39)
+        self.bst.put(26)
+        self.bst.put(17)
+        self.bst.put(18)
+        self.bst.put(20)
+        print(self.bst.preorder())
+        self.assertEqual(self.bst.height(), 5)  # number of nodes 'n' in longest path is 6 -> height is n - 1
+
+
 
 class TestSize(TestCase):
     def test_size_of_empty_tree_returns_zero(self):
@@ -127,6 +169,7 @@ class TestSize(TestCase):
         self.bst.put(21)
         self.assertEqual(self.bst.size(), 10)
 
+
 class TestSum(TestCase):
     def test_sum_of_empty_tree_is_zero(self):
         self.bst = BST()
@@ -137,7 +180,8 @@ class TestSum(TestCase):
         self.bst.put(1)
         self.assertEqual(self.bst.sum(), 1)
 
-    def test_sum_of_tree_with_more_than_one_node_is_correct(self):  # tree contains the values 5, 2, 8, 6, added in that order
+    def test_sum_of_tree_with_more_than_one_node_is_correct(
+            self):  # tree contains the values 5, 2, 8, 6, added in that order
         self.bst = BST()
         self.bst.put(5)
         self.bst.put(2)
@@ -145,17 +189,20 @@ class TestSum(TestCase):
         self.bst.put(6)
         self.assertEqual(self.bst.sum(), 21)
 
-    def test_sum_of_tree_with_only_left_branch(self):  # tree contains the values 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, added in that order
+    def test_sum_of_tree_with_only_left_branch(
+            self):  # tree contains the values 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, added in that order
         self.bst = BST()
         for _ in range(20, 1, -2):
             self.bst.put(_)
         self.assertEqual(self.bst.sum(), 110)
 
-    def test_sum_of_tree_with_only_right_branch(self):  # tree contains the values 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, added in that order
+    def test_sum_of_tree_with_only_right_branch(
+            self):  # tree contains the values 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, added in that order
         self.bst = BST()
         for _ in range(1, 20, 2):
             self.bst.put(_)
         self.assertEqual(self.bst.sum(), 100)
+
 
 class TestPreorder(TestCase):
     def test_empty_tree_returns_empty_list(self):
@@ -207,10 +254,6 @@ class TestInorder(TestCase):
         li = self.bst.inorder()
         self.assertEqual(li, [2, 4, 6, 8, 9, 10, 12, 14, 16, 17, 18, 20])
 
+
 class TestPostorder(TestCase):
     pass
-
-
-
-
-
