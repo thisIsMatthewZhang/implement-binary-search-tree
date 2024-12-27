@@ -1,7 +1,6 @@
 from unittest import TestCase
 from BST import BST
 
-
 class TestPut(TestCase):
     def test_that_bst_is_none_upon_initialization(self):
         self.bst = BST()
@@ -256,4 +255,25 @@ class TestInorder(TestCase):
 
 
 class TestPostorder(TestCase):
-    pass
+    def test_empty_tree_returns_empty_list(self):
+        self.bst = BST()
+        empty_list = self.bst.postorder()
+        self.assertEqual(empty_list, [])
+
+    def test_postorder_on_tree_with_one_node(self):
+        self.bst = BST()
+        self.bst.put(12)
+        li = self.bst.postorder()
+        self.assertEqual(li, [12])
+        self.assertEqual(li[0], 12)
+
+    def test_postorder_on_tree_with_several_nodes(self):
+        self.bst = BST()
+        for _ in range(5, 11):
+            self.bst.put(_ * 2)
+        for _ in range(5, 0, -1):
+            self.bst.put(_ * 2)
+        self.bst.put(9)
+        self.bst.put(17)
+        li = self.bst.postorder()
+        self.assertEqual(li, [2, 4, 6, 9, 8, 17, 20, 18, 16, 14, 12, 10])
