@@ -1,5 +1,6 @@
 from BST import BST
 
 bst = BST()
-bst.root = 15
-print(bst.root)
+bst.put(10)
+bst.put(15)
+print(bst.inorder())
